@@ -6,6 +6,30 @@
   <title>Desgourdes Vivien — Peinture en Bâtiment · Ambrault</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* ===== BACK TO TOP ===== */
+.back-to-top {
+  position: fixed; bottom: 2.5rem; left: 2.5rem;
+  width: 44px; height: 44px;
+  background: var(--ink);
+  color: var(--gold);
+  border: 1px solid rgba(200,151,58,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .3s, transform .3s, background .2s;
+  z-index: 200;
+  text-decoration: none;
+}
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -1350,6 +1374,12 @@
       startDrips();
       setInterval(startDrips, 6000);
     });
+    // ===== BACK TO TOP =====
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  backToTop.classList.toggle('visible', window.scrollY > 400);
+});
   </script>
+  <a href="#" class="back-to-top" id="backToTop">↑</a>
 </body>
 </html>
